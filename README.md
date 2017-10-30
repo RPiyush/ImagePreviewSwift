@@ -8,10 +8,8 @@ POD </b>
 
              pod 'ImagePreviewSwift', :git => 'https://github.com/RPiyush/ImagePreviewSwift.git', :tag => '0.0.4'
              
-<b> How to Use
+<b> How to Use </b>
  
- ## Author
-
 1. Declare Object of class <b>ImageSliderSwift </b> like var myImageSlider: ImageSliderSwift!
 
 2. Initialize object 
@@ -24,4 +22,5 @@ POD </b>
         self.myImageSlider.addImagesToView(imagesArray: imagesArray as NSArray)
     }
 
+ ## Author
 Piyush Rathi, piyush.rathi@kahunasystems.com
