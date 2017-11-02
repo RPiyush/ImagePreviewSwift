@@ -6,7 +6,7 @@ This is used for preview image.
 POD </b>
 <br>You can directly include following in your pod file
 
-    pod 'ImagePreviewSwift', :git => 'https://github.com/RPiyush/ImagePreviewSwift.git', :tag => '0.0.5'
+    pod 'ImagePreviewSwift', :git => 'https://github.com/RPiyush/ImagePreviewSwift.git', :tag => '0.0.6'
              
 <b> How to Use </b>
  
