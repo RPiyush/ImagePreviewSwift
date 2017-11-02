@@ -26,7 +26,8 @@ class ImageSliderSwift: UIView {
         return instance
     }()
 
-    func initWithFrame(frame: CGRect, parentView: UIView) -> ImageSliderSwift {
+    // MARK: - Init VC with Parent View
+    func initWithParentView(_ parentView: UIView) -> ImageSliderSwift {
 
         self.parentView = parentView
 
@@ -100,9 +101,6 @@ class ImageSliderSwift: UIView {
     }
 
     func hideView() {
-        if let centerVw = self.viewWithTag(125) {
-            centerVw.removeFromSuperview()
-        }
         self.removeFromSuperview()
     }
 
@@ -123,21 +121,23 @@ class ImageSliderSwift: UIView {
 
             if (imagePath?.contains("http"))! {
                 imageView.sd_setImage(with: URL(string: imagePath!), placeholderImage: UIImage(named: "no_preview.png"))
-            }
-                else {
-                    var path = self.getDocumentDirPath()
+            } else {
+                var path = self.getDocumentDirPath()
+                if (imagePath?.contains(path)) ?? false {
+                    path = imagePath!
+                } else {
                     path = path.appendingFormat("/%@", imagePath!)
-                    let tempImage = UIImage(contentsOfFile: path)
-                    imageView.image = tempImage
+                }
+                let tempImage = UIImage(contentsOfFile: path)
+                imageView.image = tempImage
             }
-
             imageView.contentMode = UIViewContentMode.scaleAspectFit
             imageView.clipsToBounds = true
-
             self.popupScrollView.addSubview(imageView)
         }
     }
 
+    // MARK: - Get Document Dir Path
     func getDocumentDirPath() -> String {
         let documentsPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0]
         return documentsPath
@@ -148,6 +148,7 @@ class ImageSliderSwift: UIView {
         self.hideView()
     }
 
+    // MARK: - Set Center View Margin Color
     func setMarginColor(marginColor: UIColor) {
         self.centeredView.backgroundColor = marginColor
     }
@@ -156,11 +157,7 @@ class ImageSliderSwift: UIView {
         self.popupScrollView.backgroundColor = bgColor
     }
 
-    func setImageIndex(indexFloat: CGFloat) {
-        let num = CGFloat(self.scrollViewWidth) * indexFloat
-        self.popupScrollView?.setContentOffset(CGPoint(x: num, y: 0.0), animated: false)
-    }
-
+    // MARK: - Set Image Index
     func setImageIndex(indexValue: Int) {
         let num = Int(self.scrollViewWidth) * indexValue
         self.popupScrollView.setContentOffset(CGPoint(x: num, y: 0), animated: false)
