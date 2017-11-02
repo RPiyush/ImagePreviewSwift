@@ -14,7 +14,7 @@ POD </b>
 
 2. Add Initialize object function to your file
 
-       func initializePopImageSlider(_ imagesArray: [String]) {
+       func initializeImagePreviewClass(_ imagesArray: [String]) {
          self.myImageSlider = ImageSliderSwift.sharedInstance.initWithParentView(self.view)
          self.myImageSlider.setMarginColor(marginColor: Constants.colors.sliderMarginColor)
          self.myImageSlider.addImagesToView(imagesArray: imagesArray as NSArray)
@@ -24,9 +24,9 @@ POD </b>
 
        static let sliderMarginColor = UIColor(red: 127.0 / 255.0, green: 127.0 / 255.0, blue: 127.0 / 255.0, alpha: 1.0)
 
- 3. Call Method 'initializePopImageSlider' when you have images path Array
+ 3. Call Method 'initializeImagePreviewClass' when you have images path Array
  
-        self.initializePopImageSlider(imagePathArray)
+        self.initializeImagePreviewClass(imagePathArray)
         
  4. Now when image clicked for preview, pass index value of that image. Make sure image location index is same as you passed imagePathArray index.
  
